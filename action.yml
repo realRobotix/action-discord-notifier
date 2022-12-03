@@ -13,6 +13,6 @@ output:
   result:
     description: Webhook result
 runs:
-  using: node12
+  using: node16
   main: index.js
 
