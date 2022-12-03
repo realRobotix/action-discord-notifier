@@ -5,6 +5,10 @@ const github = require('@actions/github')
 
 const webhook = core.getInput('webhook')
 
+if (github.context.eventName !== 'push') {
+  core.setFailed('This action only works on push events.')
+}
+
 if (!/https:\/\/discord(app|)\.com\/api\/webhooks\/\d+?\/.+/i.exec(webhook)) {
   core.setFailed('The given discord webhook url is invalid. Please ensure you give a **full** url that start with "https://discordapp.com/api/webhooks"')
 }
