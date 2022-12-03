@@ -5,13 +5,13 @@ on:
 
 jobs:
   build_and_push:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Setup node.js
       uses: actions/setup-node@v1
       with:
-        node-version: 12.x
+        node-version: 16.x
 
     - name: Checkout
       uses: actions/checkout@v2
@@ -19,11 +19,11 @@ jobs:
     - name: Output branch name
       id: name
       run: |
-        echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
+        echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
 
     - name: Push
       # To use latest action, specify "release-master" instead of "v0.0.4"
-      uses: satackey/push-prebuilt-action@v0.0.4
+      uses: satackey/push-prebuilt-action@release-master
       with:
         push-branch: release-${{ steps.name.outputs.branch }}
 
