@@ -23,7 +23,7 @@ jobs:
 
     - name: Push
       # To use latest action, specify "release-master" instead of "v0.0.4"
-      uses: satackey/push-prebuilt-action@release-master
+      uses: jpribyl/push-prebuilt-action@release-master
       with:
         push-branch: release-${{ steps.name.outputs.branch }}
 
