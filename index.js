@@ -15,12 +15,7 @@ const escapeMd = (str) => str.replace(/([\[\]\\`\(\)])/g, '\\$1')
 
 const { payload: githubPayload } = github.context
 
-const commits = githubPayload.commits.map((commit) => {
-  const author = commit.author.username || commit.author.name
-  const message = commit.message.split('\n')[0]
-  const sha = shortSha(commit.id)
-  return `- [${author} - ${sha}](${commit.url}): ${escapeMd(message)}`
-})
+const commits = githubPayload.commits.map(i => ` - [\`[${shortSha(i.id)}]\`](${i.url}) ${escapeMd(i.message)} - by ${i.author.name}`)
 
 if (!commits.length) {
   return
