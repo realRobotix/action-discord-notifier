@@ -19,7 +19,7 @@ const escapeMd = (str) => str.replace(/([\[\]\\`\(\)])/g, '\\$1')
 
 const { payload: githubPayload } = github.context
 
-const commits = githubPayload.commits.map(i => ` - [\`[${shortSha(i.id)}]\`](${i.url}) ${escapeMd(i.message)} - by ${i.author.name}`)
+const commits = githubPayload.commits.map(i => `- [\`[${shortSha(i.id)}]\`](${i.url}) ${escapeMd(i.message)} - by ${i.author.name}`)
 
 if (!commits.length) {
   return
@@ -29,14 +29,34 @@ const beforeSha = githubPayload.before
 const afterSha = githubPayload.after
 const compareUrl = `${githubPayload.repository.url}/compare/${beforeSha}...${afterSha}`
 
+function embedConstructor(arr, limit = 4096) {
+  const result = [];
+  let currentChunk = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const currentString = arr[i];
+
+    if (currentChunk.join("\n").length + currentString.length > limit) {
+      result.push(currentChunk.join("\n"));
+      currentChunk = [];
+    }
+
+    currentChunk.push(currentString);
+  }
+
+  if (currentChunk.length > 0) {
+    result.push(currentChunk.join("\n"));
+  }
+
+  return result.map((i, index) => ({
+    title: index === 0 ? core.getInput('message-title') || 'Commits received' : '',
+    description: i
+  }));
+}
+
 const payload = {
   content: '',
-  embeds: [
-    {
-      title: core.getInput('message-title') || 'Commits received',
-      description: `[\`\[${shortSha(beforeSha)}...${shortSha(afterSha)}\]\`](${compareUrl})\n${commits.join('\n')}`
-    }
-  ]
+  embeds: embedConstructor([`[\`\[${shortSha(beforeSha)}...${shortSha(afterSha)}\]\`](${compareUrl})\n`].concat(commits)),
 }
 
 axios
