@@ -56,7 +56,7 @@ function embedConstructor(arr, limit = 4096) {
 
 const payload = {
   content: '',
-  embeds: embedConstructor([`[\`\[${shortSha(beforeSha)}...${shortSha(afterSha)}\]\`](${compareUrl})\n`].concat(commits)),
+  embeds: embedConstructor([`[\`\[${shortSha(beforeSha)}...${shortSha(afterSha)}\]\`](${compareUrl})`].concat(commits)),
 }
 
 axios
