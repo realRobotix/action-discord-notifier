@@ -1,18 +1,18 @@
 name: Discord Notifier
 description: Get notification on discord.
 branding:
-    color: blue
-    icon: message-square
+  color: blue
+  icon: message-square
 inputs:
-    webhook:
-        description: A full discord webhook url
-        required: true
-    message-title:
-        description: Message title
-        required: false
+  webhook:
+    description: A full discord webhook url
+    required: true
+  message-title:
+    description: Message title
+    required: false
 output:
-    result:
-        description: Webhook result
+  result:
+    description: Webhook result
 runs:
-    using: node16
-    main: index.js
+  using: node16
+  main: dist/index.js/index.js
