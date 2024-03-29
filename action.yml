@@ -14,5 +14,5 @@ output:
     result:
         description: Webhook result
 runs:
-    using: node20
+    using: 'node20'
     main: index.js
