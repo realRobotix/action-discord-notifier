@@ -1,4 +1,4 @@
-/******/ (() => { // webpackBootstrap
+require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 7351:
@@ -38764,7 +38764,7 @@ if (!commits.length) {
 
 const beforeSha = githubPayload.before
 const afterSha = githubPayload.after
-const compareUrl = `${githubPayload.repository.url}/compare/${beforeSha}...${afterSha}`
+const compareUrl = `${githubPayload.repository.html_url}/compare/${beforeSha}...${afterSha}`
 
 function embedConstructor(arr, limit = 4096) {
   const result = [];
@@ -38810,3 +38810,4 @@ axios
 module.exports = __webpack_exports__;
 /******/ })()
 ;
+//# sourceMappingURL=index.js.map
