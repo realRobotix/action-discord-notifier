@@ -27,7 +27,7 @@ if (!commits.length) {
 
 const beforeSha = githubPayload.before
 const afterSha = githubPayload.after
-const compareUrl = `${githubPayload.repository.url}/compare/${beforeSha}...${afterSha}`
+const compareUrl = `${githubPayload.repository.html_url}/compare/${beforeSha}...${afterSha}`
 
 function embedConstructor(arr, limit = 4096) {
   const result = [];
