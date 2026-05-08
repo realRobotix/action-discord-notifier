@@ -10,9 +10,9 @@ inputs:
     message-title:
         description: Message title
         required: false
-output:
+outputs:
     result:
         description: Webhook result
 runs:
-    using: node20
+    using: node24
     main: dist/index.js
