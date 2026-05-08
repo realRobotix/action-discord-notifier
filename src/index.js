@@ -1,7 +1,7 @@
 const axios = require('axios')
 
-const core = require('@actions/core')
-const github = require('@actions/github')
+const core = require('./@actions/core')
+const github = require('./@actions/github')
 
 const webhook = core.getInput('webhook')
 
