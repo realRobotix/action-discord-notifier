@@ -10,7 +10,7 @@ This is a JavaScript action, so it should work on all machines include Windows, 
 on:
   push:
     branches:
-      - '**'
+      - "**"
 
 name: Discord Notification
 
@@ -27,14 +27,13 @@ jobs:
           webhook: https://discordapp.com/api/webhooks/00000000000/secret
 ```
 
-
-For more about workflow configuration, please see [GitHub Help](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions).  
+For more about workflow configuration, please see [GitHub Help](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions).
 
 About Discord webhook, please see [this article on Discord Help Centre](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
 
 ## Usage
 
-|Argument|Required|Description|
-|---|---|---|
-|webhook|✔️|A full webhook url. MUST NOT append `/github` at the end.|
-|message-title|️ |Custom embed message title. Optional.|
+| Argument      | Required | Description                                               |
+| ------------- | -------- | --------------------------------------------------------- |
+| webhook       | ✔️       | A full webhook url. MUST NOT append `/github` at the end. |
+| message-title | ️         | Custom embed message title. Optional.                     |
